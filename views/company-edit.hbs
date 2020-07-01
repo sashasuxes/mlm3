@@ -1,0 +1,42 @@
+<h1>Редактировать {{company.title}}</h1>
+
+<form action="/companies/edit" method="POST" class="company-form">
+  <div class="input-field">
+    <input id="title" name="title" type="text" class="validate" required value="{{company.title}}">
+    <label for="title">Название проекта</label>
+    <span class="helper-text" data-error="Введите название"></span>
+  </div>
+
+
+
+  <div class="input-field">
+    <textarea id="description" name="description" class="validate materialize-textarea" minlength="10" maxlength="1000"
+      required value="{{company.description}}"></textarea>
+    <label for="description">Описание</label>
+    <span class="helper-text" data-error="Введите описание"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="minDeposit" name="minDeposit" type="number" class="validate" required min="1"
+      value="{{company.minDeposit}}">
+    <label for="minDeposit">Минимальный взнос</label>
+    <span class="helper-text" data-error="Введите сумму минимального взноса"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="img" name="img" type="text" class="validate" required value="{{company.img}}">
+    <label for="img">URL картинки</label>
+    <span class="helper-text" data-error="Введите url картинки"></span>
+  </div>
+
+  <input type="hidden" name="id" value="{{company.id}}">
+  <input type="hidden" name="_csrf" value="{{csrf}}">
+
+  <button type="submit" class="btn btn-primary">Редактировать проект</button>
+</form>
+
+<form action="/companies/remove" method="POST">
+  <input type="hidden" name="_csrf" value="{{csrf}}">
+  <input type="hidden" name="id" value="{{ company.id }}">
+  <button class="btn red">Удалить проект</button>
+</form>
